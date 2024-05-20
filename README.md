@@ -69,9 +69,7 @@ I am currently developing a 'Performance Tester' that will simulate past investm
 The valuation formula calculates the **Final Fair Value** of a company's stock as follows:
 
 $$
-\text{Final Fair Value} = 
-
-\frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right) + \text{Current Assets} - \text{Liabilities}
+\text{Final Fair Value} = \frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right) + \text{Current Assets} - \text{Liabilities}
 $$
 
 **Final Fair Value**: An estimated market value of a company under current economic conditions, calculated based on the assumptions that:
