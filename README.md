@@ -27,10 +27,15 @@ Below is an image showcasing the latest stock recommendations from our valuation
 - **Name**: Official name of the company.
 - **Margin**: Represents the margin by which our model predicts the stock is undervalued. Higher values suggest greater undervaluation, indicating potential investment opportunities.
 
-These recommendations are updated regularly to reflect the latest data and market conditions. Investors are encouraged to consider these opportunities alongside their own research and investment strategies.
 
 
 ## Usage
+### Tips!
+This tool is designed for both seasoned investors and those new to stock investments. 
+- For investment enthusiasts, it provides a shortlist of stocks that demonstrate financial health and high growth potential. 
+- If you are less experienced or prefer a more hands-off approach, it's recommended to run the tool annually to review and potentially adjust your portfolio based on the top 10 recommended stocks to buy, keep, or sell. These recommendations aim to offer a high margin compared to their current market capitalization.
+
+
 
 ### Setup and Installation
 
@@ -55,10 +60,6 @@ python update.py
 ```
 Note: Updating the data may take several hours depending on your internet speed and the amount of data being processed.
 
-### Tips!
-This tool is designed for both seasoned investors and those new to stock investments. For investment enthusiasts, it provides a shortlist of stocks that demonstrate financial health and high growth potential. If you are less experienced or prefer a more hands-off approach, it's recommended to run the tool annually to review and potentially adjust your portfolio based on the top 10 recommended stocks to buy, keep, or sell. These recommendations aim to offer a high margin compared to their current market capitalization.
-
-
 ### Upcoming Features
 I am currently developing a 'Performance Tester' that will simulate past investment returns using this model. This feature will allow users to compare how much they would have potentially beaten the market if they had followed the investment strategies suggested by this tool.
 
@@ -66,11 +67,11 @@ I am currently developing a 'Performance Tester' that will simulate past investm
 ## Valuation Formula
 
 The valuation formula calculates the **Final Fair Value** of a company's stock as follows:
+$$
+\text{Final Fair Value} = 
 
-**Final Fair Value** = 
-\[
 \frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right) + \text{Current Assets} - \text{Liabilities}
-\]
+$$
 
 **Final Fair Value**: An estimated market value of a company under current economic conditions, calculated based on the assumptions that:
 - The company will continue to generate returns at the expected growth rate (ROIC) for the next \( n \) years.
@@ -84,25 +85,25 @@ The formula incorporates a base multiplier of 10%, which is determined based on 
 
 Earning Yield is a direct measure of the return on investment that investors receive from a company's earnings relative to its share price. It is inversely proportional to the P/E ratio and is calculated as follows:
 
-\[
+$$
 \text{Earning Yield} = \frac{\text{Earnings for a 12-month period per share}}{\text{Price per share}}
-\]
+$$
 
 Thus, the relationship between net income and share price can be expressed as:
 
-\[
+$$
 \text{Net Income} \times (\text{P/E ratio}) = \text{Price per share}
-\]
+$$
 
 Assuming a company maintains a constant and permanent earning yield of 10%, the price of the company's shares can be estimated by multiplying the net income by 10 (the P/E ratio for a 10% yield). This benchmark sets a standard against which adjustments can be made based on expected growth.
 
-The P/E ratio is adjusted to reflect anticipated returns, allowing for higher valuations in the context of higher expected growth rates. Therefore, the valuation formula adjusts the future earnings potential as follows:
+And now, when the expected growth rate became different from 10%, the P/E ratio is adjusted to reflect anticipated returns, allowing for higher valuations in the context of higher expected growth rates.
 
-\[
-\frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right)
-\]
+$$
+\text{Net Income} \times \frac{(1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right)
+$$
 
-This component of the formula scales the net income based on the compounded effect of ROIC over \( n \) years, discounted by the compounded base multiplier (reflecting the required return rate), and adjusted by a factor derived from the base multiplier to align the model with market valuation norms.
+This component of my valuation model adjusts the P/E ratio to reflect the expected growth from the company's return on invested capital (ROIC) over the next n years. It does this by factoring in the ROIC's compounding effect over time, which is moderated by the expected rate of return (represented by the base multiplier). This adjustment ensures that the P/E ratio aligns with market valuation standards, offering a realistic projection of the company’s growth potential.
 
 This valuation approach enables investors to estimate the fair value of a company by integrating expected profitability, growth potential, and required returns in a coherent framework. It provides a strategic tool for assessing whether a company's current market valuation aligns with its financial performance and investor expectations.
 
