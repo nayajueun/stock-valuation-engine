@@ -2,7 +2,7 @@
 First prototype.
 ## Overview
 
-This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued, offering potentially higher growth prospects. The primary objective of this project is to leverage historical financial data to determine the stocks with the highest and lowest potential for growth, thereby assisting investors in making informed investment decisions.
+This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued, offering potentially higher growth prospects in long-term investments. The primary objective of this project is to leverage historical financial data to determine the stocks with the highest and lowest potential for growth, thereby assisting investors in making informed investment decisions.
 
 ## Features
 
@@ -67,6 +67,7 @@ I am currently developing a 'Performance Tester' that will simulate past investm
 ## Valuation Formula
 
 The valuation formula calculates the **Final Fair Value** of a company's stock as follows:
+
 $$
 \text{Final Fair Value} = 
 

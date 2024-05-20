@@ -20,5 +20,3 @@ if __name__ == '__main__':
     data = load_and_filter_data(filepath, country, sector, min_cap, max_cap)
     data = data.sort_values(by=['Margin'], ascending=False)
     print(data.head(n)[['Ticker', 'Name', 'Margin']])
-    # results = apply_valuation(data, 10)
-    # print(results)
