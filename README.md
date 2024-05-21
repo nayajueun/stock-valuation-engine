@@ -2,7 +2,7 @@
 First prototype.
 ## Overview
 
-This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued, offering potentially higher growth prospects in long-term investments. The primary objective of this project is to leverage historical financial data to determine the stocks with the highest and lowest potential for growth, thereby assisting investors in making informed investment decisions.
+This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued with the highest potential for growth, thereby assisting investors in making informed long-term investment decisions.
 
 ## Features
 
@@ -72,7 +72,7 @@ $$
 \text{Final Fair Value} = \frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right) + \text{Current Assets} - \text{Liabilities}
 $$
 
-**Final Fair Value**: An estimated market value of a company under current economic conditions, calculated based on the assumptions that:
+**Final Fair Value**: Qualitative market value of a company under current economic conditions, calculated based on the assumptions that:
 - The company will continue to generate returns at the expected growth rate (ROIC) for the next \( n \) years.
 - The investor's required return, represented by the base_multiplier (%), reflects the opportunity cost of capital, which is 10% by default.
 
