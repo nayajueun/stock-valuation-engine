@@ -102,7 +102,7 @@ $$
 \text{Net Income} \times \frac{(1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right)
 $$
 
-This component of my valuation model adjusts the P/E ratio to reflect the expected growth from the company's return on invested capital (ROIC) over the next n years. It does this by factoring in the ROIC's compounding effect over time, which is moderated by the expected rate of return (represented by the base multiplier). This adjustment ensures that the P/E ratio aligns with market valuation standards, offering a realistic projection of the company’s growth potential.
+This component of my valuation model adjusts the P/E ratio to reflect the expected growth (estimated by the company's return on invested capital (ROIC)) over the next n years. This adjustment ensures that the P/E ratio aligns with market valuation standards, offering a projection of the company’s growth potential.
 
 This valuation approach enables investors to estimate the fair value of a company by integrating expected profitability, growth potential, and required returns in a coherent framework. It provides a strategic tool for assessing whether a company's current market valuation aligns with its financial performance and investor expectations.
 
@@ -110,8 +110,8 @@ This valuation approach enables investors to estimate the fair value of a compan
 
 The valuation model is predicated on several key assumptions:
 
+- **Growth rate prediction**: The growth rate was calculated by taking a mean of the return on invested capital for the past two years. It assumed that the growth rate is maintained for the next n years.
 - **Investment in Value**: It is assumed that the intrinsic value of a company, reflected by its potential for growth as measured by the Return on Invested Capital (ROIC), will eventually be recognized in the stock price. Although a company may initially reinvest its income for internal growth, it is anticipated that they will undertake share buybacks as a strategic investment, recognizing the value this brings to the company.
-- **Market Capitalization Alignment**: Over time, the market is expected to recognize the true value of a company, aligning the market capitalization with the fair value derived from financial analyses.
 
 ### Further Improvement
 
