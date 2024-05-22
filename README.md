@@ -2,7 +2,7 @@
 First prototype.
 ## Overview
 
-This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued with the highest potential for growth, thereby assisting investors in making informed long-term investment decisions.
+This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued with steep growth trajectory demonstrated, thereby assisting investors in making informed long-term investment decisions.
 
 ## Features
 
