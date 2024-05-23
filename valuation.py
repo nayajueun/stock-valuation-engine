@@ -24,18 +24,26 @@ class Valuation:
         }
     
     def valuate_row_2(self, row, n=0):
+        # row can be a row in pandas df, or a dictionary
         assert(n >= 0 and n < 3)
-        ticker = row['Ticker']
-        mkt_cap = row['Market Cap']
-        net_income = row['Net Income']
-        roic = row['ROIC']
-        if len(net_income) <= 1 + n and len(roic) <= 1 + n:
-            return pd.Series([np.nan, np.nan])
-        
-        net_income_val = net_income[0]
-        roic_val = (row['ROIC'][0 + n] + row['ROIC'][1 + n]) / 2
-        current_assets = row['Current Asset']
-        liabilities = row['Total Liabilities']
 
-        val_res = self.valuate_price_2(ticker, roic_val, net_income_val, current_assets, liabilities, mkt_cap)
+        required_keys = ['Ticker', 'Market Cap History', 'Net Income', 'ROIC', 'Current Asset', 'Total Liabilities']
+        for key in required_keys:
+            if key not in row or len(row[key]) <= n:
+                return pd.Series([np.nan, np.nan])
+        
+        values_to_check = ['Market Cap History', 'Net Income', 'ROIC', 'Current Asset', 'Total Liabilities']
+        for key in values_to_check:
+            if isinstance(row[key], list) and (not isinstance(row[key][n], (int, float)) or np.isnan(row[key][n])):
+                print
+                return pd.Series([np.nan, np.nan])
+            
+        ticker = row['Ticker']
+        mkt_cap = row['Market Cap History'][n]
+        net_income = row['Net Income'][n]
+        roic_val = (row['ROIC'][0 + n] + row['ROIC'][1 + n]) / 2
+        current_assets = row['Current Asset'][n]
+        liabilities = row['Total Liabilities'][n]
+        val_res = self.valuate_price_2(ticker, roic_val, net_income, current_assets, liabilities, mkt_cap)
+
         return pd.Series([val_res['final_value'], val_res['margin']])

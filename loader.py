@@ -54,5 +54,5 @@ class Loader:
         stk_data = stk_data.rename(columns={'회사명': 'Name', '종목코드': 'Code'})
         stk_data['Code'] = stk_data['Code'].apply(lambda input: '0' * (6 - len(str(input))) + str(input) + '.KS')
 
-        return stk_data
+        return stk_data['Code'].to_list()
 
