@@ -14,7 +14,7 @@ The Stock Valuation Project offers a range of features designed to aid investors
 
 These features are designed to provide a robust toolset for investors looking to maximize their investment returns by targeting stocks that are likely to be undervalued.
 
-## Current Stock Recommendations (as of May 2024)
+## Current Stock Recommendations (as of 23 May 2024)
 
 Below is an image showcasing the latest stock recommendations from our valuation model. This table lists the most undervalued stocks as identified by our system, providing their ticker symbols, company names, and the calculated margin values which suggest their potential for growth:
 
