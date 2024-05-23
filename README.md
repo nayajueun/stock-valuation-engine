@@ -2,7 +2,7 @@
 First prototype.
 ## Overview
 
-This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued with the highest potential for growth, thereby assisting investors in making informed long-term investment decisions.
+This project provides tools designed to facilitate the identification and shortlisting of undervalued stocks listed on Yahoo Finance. Utilizing comprehensive financial data accessed through the Yahoo Finance API, this tool aims to pinpoint stocks that are significantly undervalued with high potential for growth, thereby assisting investors in making informed long-term investment decisions.
 
 ## Features
 
@@ -11,7 +11,6 @@ The Stock Valuation Project offers a range of features designed to aid investors
 - **Stock Analysis**: Identifies and lists the \( n \) most undervalued stocks by evaluating their financial health and stock valuation, facilitating a comparative analysis across different sectors and markets.
 - **Customizable Filters**: Allows users to refine their search by applying filters based on country, sector, and market capitalization range, tailoring the analysis to specific investment interests or strategies.
 - **Yearly Updates**: Automatically fetches updated financial data for any publicly traded company listed on Yahoo Finance, ensuring the analysis is based on the most recent information.
-- **Performance Tester (In Progress)**: Currently under development, this feature will test the performance of the valuation model by simulating the returns of buying and selling the identified stocks on a regular interval over the past three years. This simulation aims to project potential investment outcomes based on historical data.
 
 These features are designed to provide a robust toolset for investors looking to maximize their investment returns by targeting stocks that are likely to be undervalued.
 
@@ -27,7 +26,14 @@ Below is an image showcasing the latest stock recommendations from our valuation
 - **Name**: Official name of the company.
 - **Margin**: Represents the margin by which our model predicts the stock is undervalued. Higher values suggest greater undervaluation, indicating potential investment opportunities.
 
+## Performance Test Result
+The simulation involved selecting and investing in top 10 recommended stocks based on our model's predictions with the default values chosen, tracking their performance over the course of one year.
+| Period                    | Return on Stocks | Benchmark Increase (S&P 500) |
+|---------------------------|------------------|--------------------|
+| 24 May 2023 - 23 May 2024 | 49.15%           | 28.96%             |
+| 24 May 2022 - 24 May 2023 | 10.25%           | 4.41%              |
 
+Even though I will need to test with more historical data, the result is promising and highlights its potential to generate actionable insights that can outperform the market.
 
 ## Usage
 ### Tips!
@@ -59,10 +65,6 @@ To ensure the data is current, you should update it annually. Run the following 
 python update.py
 ```
 Note: Updating the data may take several hours depending on your internet speed and the amount of data being processed.
-
-### Upcoming Features
-I am currently developing a 'Performance Tester' that will simulate past investment returns using this model. This feature will allow users to compare how much they would have potentially beaten the market if they had followed the investment strategies suggested by this tool.
-
 
 ## Valuation Formula
 
