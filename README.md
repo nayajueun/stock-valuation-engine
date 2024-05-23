@@ -27,12 +27,12 @@ Below is an image showcasing the latest stock recommendations from our valuation
 - **Margin**: Represents the margin by which our model predicts the stock is undervalued. Higher values suggest greater undervaluation, indicating potential investment opportunities.
 
 ## Performance Test Result
-The simulation involved selecting and investing in top 10 recommended stocks based on our model's predictions with the default values chosen, tracking their performance over the course of one year.
+The simulation conducted selecting and investing ~10,000 USD each in top 10 recommended stocks based on our model's predictions with the default values chosen, and holding for a 12-month period, before deciding to sell them or retain any that were recommended again for the following year.
 | Period                    | Return on Stocks | Benchmark Increase (S&P 500) |
 |---------------------------|------------------|--------------------|
 | 24 May 2023 - 23 May 2024 | 49.15%           | 28.96%             |
 | 24 May 2022 - 24 May 2023 | 10.25%           | 4.41%              |
-
+(Commission fee was assumed to be negligible.)
 Even though I will need to test with more historical data, the result is promising and highlights its potential to generate actionable insights that can outperform the market.
 
 ## Usage

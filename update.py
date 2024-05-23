@@ -97,6 +97,7 @@ class DataUpdater:
     def get_trailing_data_from_info_hist(self, stock, trailing_years=4):
         today = datetime.now().date()
 
+        #TODO: Timezome + leap year implementation
         dates = [today - timedelta(days=i * 365) for i in range(4)]
 
         
