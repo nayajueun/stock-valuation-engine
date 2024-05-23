@@ -32,8 +32,8 @@ The simulation conducted selecting and investing ~10,000 USD each in top 10 reco
 |---------------------------|------------------|--------------------|
 | 24 May 2023 - 23 May 2024 | 49.15%           | 28.96%             |
 | 24 May 2022 - 24 May 2023 | 10.25%           | 4.41%              |
-(Commission fee was assumed to be negligible.)
 
+(Commission fee was assumed to be negligible.)
 Even though I will need to test with more historical data, the result is promising and highlights its potential to generate actionable insights that can outperform the market.
 
 ## Usage
