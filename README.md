@@ -88,13 +88,13 @@ The formula incorporates a base multiplier of 10%, which is determined based on 
 Earning Yield is a direct measure of the return on investment that investors receive from a company's earnings relative to its share price. It is inversely proportional to the P/E ratio and is calculated as follows:
 
 $$
-\text{Earning Yield} = \frac{\text{Earnings for a 12-month period per share}}{\text{Price}}
+\text{Earning Yield} = \frac{\text{Earnings for a 12-month period per share}}{\text{Price per share}}
 $$
 
 Thus, the relationship between net income and share price can be expressed as:
 
 $$
-\text{Net Income} \times (\text{P/E ratio}) = \text{Price per share}
+\text{Net Income} \times (\text{P/E ratio}) = \text{Price}
 $$
 
 Assuming a company maintains a constant and permanent earning yield of 10%, the price of the company's shares can be estimated by multiplying the net income by 10 (the P/E ratio for a 10% yield). This benchmark sets a standard against which adjustments can be made based on expected growth.
