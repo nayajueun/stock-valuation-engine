@@ -72,7 +72,7 @@ Note: Updating the data may take several hours depending on your internet speed 
 The valuation formula calculates the **Final Fair Value** of a company's stock as follows:
 
 $$
-\text{Final Fair Value} = \frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right) + \text{Current Assets} - \text{Liabilities}
+\text{Final Fair Value} = \frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \frac{\text{Base Multiplier}}{100})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right) + \text{Working Capital}
 $$
 
 **Final Fair Value**: Qualitative market value of a company under current economic conditions, calculated based on the assumptions that:
@@ -102,7 +102,7 @@ Assuming a company maintains a constant and permanent earning yield of 10%, the 
 And now, when the expected growth rate became different from 10%, the P/E ratio is adjusted to reflect anticipated returns, allowing for higher valuations in the context of higher expected growth rates.
 
 $$
-\text{Net Income} \times \frac{(1 + \text{ROIC})^n}{(1 + \text{Base Multiplier})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right)
+\frac{(\text{Net Income}) \times (1 + \text{ROIC})^n}{(1 + \frac{\text{Base Multiplier}}{100})^n} \times \left(\frac{100}{\text{Base Multiplier}}\right)
 $$
 
 This component of my valuation model adjusts the P/E ratio to reflect the expected growth (estimated by the company's return on invested capital (ROIC)) over the next n years. This adjustment ensures that the P/E ratio aligns with market valuation standards, offering a projection of the company’s growth potential.
