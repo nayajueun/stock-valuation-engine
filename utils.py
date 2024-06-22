@@ -37,7 +37,7 @@ def is_json(myjson):
 
 
 def load_and_filter_data(filepath, country=None, sector=None, min_cap=None, max_cap=None):
-    df = pd.read_csv(filepath)
+    df = load_csv(filepath)
     if country:
         df = df[df['Country'] == country]
     if sector:

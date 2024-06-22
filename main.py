@@ -20,3 +20,11 @@ if __name__ == '__main__':
     data = load_and_filter_data(filepath, country, sector, min_cap, max_cap)
     data = data.sort_values(by=['Margin'], ascending=False)
     print(data.head(n)[['Ticker', 'Name', 'Margin']])
+
+    median = data['Margin'].median()
+    print(f"Median Margin (Filtered): {median}")
+
+    data_all = load_csv("financial_data.csv")
+    median_all = data_all['Margin'].median()
+    print(f"Median Margin (All): {median_all}")
+
