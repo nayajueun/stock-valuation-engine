@@ -10,6 +10,24 @@ from loader import Loader
 import pandas as pd
 from utils import *
 from datetime import datetime, timedelta, timezone
+import time
+import requests
+import random
+
+def with_backoff(fn, tries=6, base=2.0):
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:
+            # raise e
+            msg = str(e)
+            if "429" in msg or "Too Many Requests" in msg:
+                sleep_s = base ** i + random.uniform(0, 1.0)
+                print(f"[429] sleeping {sleep_s:.1f}s then retry...")
+                time.sleep(sleep_s)
+                continue
+            raise
+    return None
 
 # Load data
 
@@ -59,7 +77,7 @@ class DataUpdater:
         
         recent_year = balance_sheet.iloc[:, 0].name.year
         curr_year = datetime.now().year
-        if abs(curr_year - recent_year) > 1:  # if data is too outdated
+        if abs(curr_year - recent_year) > 2:  # if data is too outdated
             return {}
 
         years = [recent_year - i for i in range(4)]
@@ -156,14 +174,16 @@ class DataUpdater:
 
         try:
             company = yf.Ticker(ticker_symbol)
-            info = company.info
-            income_stmt = company.income_stmt
-            balance_sheet = company.balance_sheet
-            mkt_cap = info.get('marketCap', np.nan)
+            info = with_backoff(lambda: company.fast_info)
+            time.sleep(1)
+            income_stmt = with_backoff(lambda: company.income_stmt)
+            time.sleep(1)
+            balance_sheet = with_backoff(lambda: company.balance_sheet)
 
             if not balance_sheet.empty and not income_stmt.empty:
             # # Initialize ROIC and net income after setting up the object
             # if not income_stmt.empty and not balance_sheet.empty:
+                print(f"Got some data to add for {ticker_symbol}")
                 bs_is = self.get_trailing_data_from_bs_is(balance_sheet, income_stmt)
                 if 'ROIC' not in bs_is or all(np.isnan(value) for value in bs_is['ROIC']):
                     return False
@@ -189,6 +209,7 @@ class DataUpdater:
                 return True
                 
         except Exception as e:
+            # raise e
             print(f"Error initializing Valuation for {ticker_symbol}: {e}")
 
         return False
@@ -199,10 +220,33 @@ class DataUpdater:
             file.write(datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S'))
 
 
-    def update_data(self, ticker_symbols):
+    def update_data(self, ticker_symbols, addition=True, reset=False):
+
+        if addition:
+            df = pd.read_csv("financial_data.csv")
+            current_tickers = set(df['Ticker'].astype(str))  # Convert to set for fast lookup
+
+            # Remove current tickers from ls
+            ticker_symbols = [ticker for ticker in ticker_symbols if ticker not in current_tickers]
+
+        if not addition and reset:
+            columns = [
+                "Ticker", "Name", "Country", "Financial Currency", "Sector Key", "Industry Key",
+                "Market Cap", "Market Cap History", "Stock Price", "Dividends",
+                "Current Asset", "Non Current Asset", "Total Liabilities",
+                "Net Income", "ROIC", "Final Value", "Margin"
+            ]
+
+            # Create an empty DataFrame with the specified columns
+            df_empty = pd.DataFrame(columns=columns)
+
+            # Write it to CSV (overwrite mode)
+            df_empty.to_csv("financial_data.csv", index=False)
+
         print(f"{len(ticker_symbols)} companies to be added in")
         val = Valuation()
         count = 0
+
         for idx, stock in enumerate(ticker_symbols):
             print(stock)
             added_row = self.fetch_and_add_company(stock)
@@ -217,6 +261,9 @@ class DataUpdater:
                 # Reset financial_data dictionary
                 self.financial_data = {key: [] for key in self.financial_data}
                 count = 0
+                time.sleep(200)
+
+            print(f"count: {count}")
         
         if count > 0:
             sp500_stock = yf.Ticker('^GSPC')
@@ -236,12 +283,14 @@ class DataUpdater:
 
 if __name__ == '__main__':
     loader = Loader()
-    ticker_symbols_to_update = loader.load_us_stocks()
-    ls = list(ticker_symbols_to_update)
-    with open("all_stocks.pkl", 'wb') as f:
-        pkl.dump(ls, f)
+    # ticker_symbols_to_update = loader.load_us_stocks()
+    # ls = list(ticker_symbols_to_update)
+    # with open("all_stocks.pkl", 'wb') as f:
+    #     pkl.dump(ls, f)
+    df = pd.read_csv('financial_data_template.csv')
+    ls = set(df['Ticker'])
 
-    # ls = ['AAPL']
+    ls = ['TSLA']
     updater = DataUpdater("financial_data.csv")
-    updater.update_data(ticker_symbols=ls)
+    updater.update_data(ticker_symbols=ls, addition=False)
 

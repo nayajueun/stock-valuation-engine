@@ -22,7 +22,7 @@ class PerformanceTester():
             for i in range(2, 0, -1):
 
                 df[['Final Value', 'Margin']] = df.apply(lambda row, i=i: self.valuation.valuate_row_2(row, n=i), axis=1)
-                df = df[df['Country'] == 'United States'] 
+                # df = df[df['Country'] == 'United States'] 
                 df = df[df['Market Cap'] >= 1000000000]
                 df = df.sort_values(by=['Margin'], ascending=False)
                 print(f"simulation run at: {this_time}")
